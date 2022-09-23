@@ -24,12 +24,15 @@ import com.liferay.portal.kernel.model.BaseModel;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.osgi.service.component.annotations.Component;
+
 /**
  * The arguments resolver class for retrieving value from CommerceCurrency.
  *
  * @author Andrea Di Giorgi
  * @generated
  */
+@Component(immediate = true, service = ArgumentsResolver.class)
 public class CommerceCurrencyModelArgumentsResolver
 	implements ArgumentsResolver {
 
