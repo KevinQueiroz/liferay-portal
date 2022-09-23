@@ -13,9 +13,7 @@ definition {
 
         User.firstLoginPG();
 
-        
-        task("Given the Blogs Portlet is added to the page"){
-
+        task ("Given the Blogs Portlet is added to the page") {
             JSONLayout.addPublicLayout(
                 groupName = "Guest",
                 layoutName = "Blogs Page");
@@ -38,35 +36,31 @@ definition {
         }
         else {
             BlogsEntry.tearDownCP();
-        
+
             JSONLayout.deletePublicLayout(
-                    groupName = "Guest",
-                    layoutName = "Blogs Page");   
-            }
-       
+                groupName = "Guest",
+                layoutName = "Blogs Page");
         }
+    }
 
-
-@description = "Can Create a Blog"
+    @description = "Can Create a Blog"
     @priority = "5"
     test CanCreateBlog {
-    
-        task("When the user Adds a new blog entry"){
+        task ("When the user Adds a new blog entry") {
             Blogs.addEntry(
                 entryContent = "Blogs Entry Content",
                 entryTitle = "Blogs Entry Title");
         }
 
-        task("Then the Blog Entry is displayed on the page and assert success message and entries"){
+        task ("Then the Blog Entry is displayed on the page and assert success message and entries") {
             Alert.viewSuccessMessage();
 
             Navigator.gotoPage(pageName = "Blogs Page");
-            
+
             BlogsEntry.viewEntryPG(
                 entryContent = "Blogs Entry Content",
                 entryTitle = "Blogs Entry Title");
-        }   
-
-    }       
+        }
+    }
 
 }
